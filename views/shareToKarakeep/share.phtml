@@ -1,0 +1,46 @@
+<?php
+declare(strict_types=1);
+/** @var \ShareToKarakeep\Models\View $this */
+?>
+<div class="post">
+    <h1><?= _t('share_to_karakeep.share.title') ?></h1>
+
+    <p>
+        <?= _t('share_to_karakeep.share.intro', '<strong>' . htmlspecialchars($this->entry->title(), ENT_NOQUOTES, 'UTF-8') . '</strong>'); ?>
+    </p>
+
+    <form action="<?= _url('shareToKarakeep', 'share', 'id', $this->entry->id()); ?>" method="post">
+        <input type="hidden" name="_csrf" value="<?= FreshRSS_Auth::csrfToken() ?>" />
+
+        <div class="form-group">
+            <label class="group-name" for="karakeep_title"><?= _t('share_to_karakeep.share.form.title') ?></label>
+            <div class="group-controls">
+                <input type="text" name="karakeep_title" id="karakeep_title" value="<?= htmlspecialchars($this->entry->title(), ENT_NOQUOTES, 'UTF-8') ?>" disabled />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="group-name" for="karakeep_url"><?= _t('share_to_karakeep.share.form.url') ?></label>
+            <div class="group-controls">
+                <input type="text" name="karakeep_url" id="karakeep_url" value="<?= htmlspecialchars($this->entry->link(), ENT_NOQUOTES, 'UTF-8') ?>" disabled />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="group-name" for="karakeep_archived"><?= _t('share_to_karakeep.share.form.archived') ?></label>
+            <div class="group-controls">
+                <input type="checkbox" name="karakeep_archived" id="karakeep_archived"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="group-name" for="karakeep_favorited"><?= _t('share_to_karakeep.share.form.favorited') ?></label>
+            <div class="group-controls">
+                <input type="checkbox" name="karakeep_favorited" id="karakeep_favorited"/>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-important"><?= _t('share_to_karakeep.share.form.send') ?></button>
+        <a href="<?= _url('index', 'index') ?>" class="btn"><?= _t('share_to_karakeep.share.form.cancel') ?></a>
+    </form>
+</div>

@@ -1,20 +1,20 @@
 <?php
 declare(strict_types=1);
 
-final class ShareToLinkwardenExtension extends Minz_Extension {
+final class ShareToKarakeepExtension extends Minz_Extension {
     public function init(): void {
         $this->registerTranslates();
 
-        $this->registerController('shareToLinkwarden');
+        $this->registerController('shareToKarakeep');
         $this->registerViews();
 
         $conf = FreshRSS_Context::userConf();
-        $linkwarden_url = $conf->linkwarden_url;
-        $linkwarden_token = $conf->linkwarden_token;
-        if (!empty($linkwarden_url) && !empty($linkwarden_token)) {
+        $karakeep_url = $conf->karakeep_url;
+        $karakeep_token = $conf->karakeep_token;
+        if (!empty($karakeep_url) && !empty($karakeep_token)) {
             FreshRSS_Share::register([
-                'type' => 'linkwarden',
-                'url' => Minz_Url::display(['c' => 'shareToLinkwarden', 'a' => 'share']) . '&id=~ID~',
+                'type' => 'karakeep',
+                'url' => Minz_Url::display(['c' => 'shareToKarakeep', 'a' => 'share']) . '&id=~ID~',
                 'transform' => [],
                 'form' => 'simple',
                 'method' => 'GET',
@@ -29,14 +29,14 @@ final class ShareToLinkwardenExtension extends Minz_Extension {
 
         if (Minz_Request::isPost()) {
             $conf = FreshRSS_Context::userConf();
-            $conf->linkwarden_url = Minz_Request::paramString('linkwarden_url');
-            $conf->linkwarden_token = Minz_Request::paramString('linkwarden_token');
+            $conf->karakeep_url = Minz_Request::paramString('karakeep_url');
+            $conf->karakeep_token = Minz_Request::paramString('karakeep_token');
             $conf->save();
         }
     }
 
     public function loader(string $class_name): void {
-        if (strpos($class_name, 'ShareToLinkwarden') === 0) {
+        if (strpos($class_name, 'ShareToKarakeep') === 0) {
             $class_name = substr($class_name, 18);
             $base_path = $this->getPath() . '/';
             include($base_path . str_replace('\\', '/', $class_name) . '.php');

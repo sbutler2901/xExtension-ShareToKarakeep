@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ShareToLinkwarden\Models;
+namespace ShareToKarakeep\Models;
 
 class View extends \Minz_View {
     public ?\FreshRSS_Entry $entry = null;

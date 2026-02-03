@@ -1,8 +1,8 @@
 {
-    "name": "Share to Linkwarden",
-    "author": "Dieter Blomme",
-    "description": "Adds a button to share articles to Linkwarden.",
+    "name": "Share to Karakeep",
+    "author": "Dieter Blomme / Seth Butler",
+    "description": "Adds a button to share articles to Karakeep.",
     "version": "0.1.0",
-    "entrypoint": "ShareToLinkwarden",
+    "entrypoint": "ShareToKarakeep",
     "type": "user"
 }

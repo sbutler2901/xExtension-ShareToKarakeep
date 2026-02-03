@@ -2,6 +2,6 @@
 
 return array(
     'share' => array(
-        'linkwarden' => 'Linkwarden',
+        'karakeep' => 'Karakeep',
     ),
 );
